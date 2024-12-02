@@ -1,0 +1,22 @@
+###
+GET http://localhost:3000/posts
+
+###
+GET http://localhost:3000/posts?owner=Eliav
+
+###
+GET http://localhost:3000/posts/67332305594350d4ce5475de
+
+###
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+  "owner": "yoni1",
+  "title": "Post title",
+  "content": "Post content...."
+}
+
+###
+
+DELETE http://localhost:3000/posts/67332305594350d4ce5475de
