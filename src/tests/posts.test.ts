@@ -1,24 +1,30 @@
-const request = require('supertest');
-const initApp = require('../server');
-const mongoose = require('mongoose');
-const postModel = require('../models/posts_model');
+import request from 'supertest';
+import initApp from '../server';
+import mongoose from 'mongoose';
+import PostsModel from '../models/posts_model';
+import { Express } from 'express';
 
-var app;
+let app: Express;
+
 beforeAll(async () => {
     console.log('beforeAll');
     app = await initApp();
-    await postModel.deleteMany();
+    await PostsModel.deleteMany();
 });
 
 afterAll(async () => {   
     console.log('afterAll');
     await mongoose.connection.close();
 });
-var postId = '';
-var postTest = {
+let postId = '';
+const postTest = {
     title: 'Test Post',
     content: 'Test Content',
     owner: 'Test Owner'
+}
+const invalidPost = {
+    title: 'Test Post',
+    content: 'Test Content',
 }
 describe('Posts test suite', () => {
     test('Posts : TEST GetAllPosts before adding post', async () => {
@@ -84,10 +90,7 @@ describe('Posts test suite', () => {
     test('Posts: Test CreatePost failure', async () => {
         const response = await request(app)
             .post('/posts')
-            .send({
-                title: postTest.title,
-                content: postTest.content
-            });
+            .send(invalidPost);
         expect(response.statusCode).toBe(400);
     });
 

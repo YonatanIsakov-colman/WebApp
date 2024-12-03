@@ -12,11 +12,11 @@ POST http://localhost:3000/posts
 Content-Type: application/json
 
 {
-  "owner": "yoni1",
+  "owner": "Eliav",
   "title": "Post title",
   "content": "Post content...."
 }
 
 ###
 
-DELETE http://localhost:3000/posts/67332305594350d4ce5475de
+DELETE http://localhost:3000/posts/674f22cf6a07769cd90dd682
