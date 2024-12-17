@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import PostsRoutes from './routes/posts_routes';
 import CommentsRoutes from './routes/comments_routes';
-
+import AuthRoutes from './routes/auth_routes';
 
 
 
@@ -26,6 +26,7 @@ const initApp = () => {
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use("/posts", PostsRoutes);
         app.use("/comments", CommentsRoutes);
+        app.use("/auth", AuthRoutes);
         app.get('/about', (req, res) => {
             res.send("About page");
         });
