@@ -139,7 +139,7 @@ const logout = async (req: Request, res: Response) => {
           res.status(400).send("error");
           return;
         }
-        //remove the token from the user
+        
         user.refreshTokens = user.refreshTokens!.filter((token) => token !== req.body.refreshToken);
         await user.save();
         res.status(200).send("logged out");

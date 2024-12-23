@@ -11,12 +11,12 @@ const testUser = {
     email: "test@user.com",
     password: "123456",
     accessToken: "",
-  }
+}
 let postId = '';
 const postTest = {
     title: 'Test Post',
     content: 'Test Content',
-    owner:""
+    owner: ""
 }
 const invalidPost = {
     content: 'Test Content',
@@ -33,7 +33,7 @@ beforeAll(async () => {
     postTest.owner = response2.body._id;
 });
 
-afterAll(async () => {   
+afterAll(async () => {
     console.log('afterAll');
     await mongoose.connection.close();
 });
